@@ -16,4 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/candidates', 'WebController@candidates');
+Route::get('/candidates/{id}', 'WebController@candidate');
 

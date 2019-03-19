@@ -4,7 +4,8 @@
 
 <script lang="js">
     window.CANDIDATE_PAGE_MODE = {
-        type: 'ALL'
+        type: 'SINGLE',
+        candidate_id: {{$candidate_id}}
     } ;
 </script>
 

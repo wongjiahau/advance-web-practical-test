@@ -10,4 +10,9 @@ class WebController extends Controller
     {
         return view('candidates.index');
     }
+
+    public function candidate($id)
+    {
+        return view('candidates.single', ["candidate_id" => $id]);
+    }
 }
