@@ -8,7 +8,7 @@ class WebController extends Controller
 {
     public function candidates()
     {
-        return view('candidates.index');
+        return view('candidates.all');
     }
 
     public function candidate($id)

@@ -1,56 +1,57 @@
-## Getting driver error?
+# Things done
 
-```
-sudo apt-get install php7.2-mysql
-```
-
-Also, try to restart the server.
-```
-sudo service apache2 restart
-```
-
-
-## How to start the server?
-
-```
-php artisan serve
-```
-
-## What command is typed?
-
+## Q1(b)
 ```sh
-# Q1(b) 
 php artisan preset react
+```
 
-# Q1(c)
-# Create migrations definition
+
+## Q1(c)
+Create migrations definition
+```
 php artisan make:migration create_parties_table --create=parties
 php artisan make:migration create_candidates_table --create=candidates
-php artisan migrate
+```
 
-# Q1(d) 
-## database seeding
-## First, create models first
+Run the migration.
+```
+php artisan migrate
+```
+
+## Q1(d) 
+First, create models:
+
+```
 php artisan make:model Party
 php artisan make:model Candidate
+```
 
-## Then, update DatabaseSeeder.php
-## Lastly, seed the tables
+Then, update `DatabaseSeeder.php`
+
+Lastly, seed the tables:
+
+```
 php artisan db:seed
+```
 
-# Q2(a)
-## update Party.php and Candidates.php
+## Q2(a)
+Update `Party.php` and `Candidates.php`
 
-# Q2(b)
+## Q2(b)
+```
 php artisan make:resource PartyResource
 php artisan make:resource CandidateResource
 php artisan make:resource PartyCollection
 php artisan make:resource CandidateCollection
+```
 
-# Q2(c)
+## Q2(c)
+```
 php artisan make:controller PartyController
 php artisan make:controller CandidateController
-## Testing Q2(c) with HTTPie
+```
+Testing Q2(c) with HTTPie
+```sh
 ### Retrieving all candidates
 http GET    http://localhost:8000/api/candidates
 
@@ -62,89 +63,24 @@ echo '{"name":"New Candidate", "party_id": 3}' | http POST http://localhost:8000
 
 ### Updating candidate
 echo '{"name":"updated Candidate", "party_id": 2}' | http PUT http://localhost:8000/api/candidates/6
+```
 
 
-# Q3(a)
-## Create a web controller
+## Q3(a) & 3(b)
+Create a web controller
+```
 php artisan make:controller WebController
-
-
-
-php artisan make:migration create_authors_book_table --create=authors_book
-php artisan make:migration create_books_table        --create=books
-php artisan make:migration create_publishers_table   --create=publishers
-php artisan make:migration create_authorss_table     --create=authors
-
-# Run the migration
-php artisan migrate
-
-# Create modul
-php artisan make:model Book
-php artisan make:model Publisher
-php artisan make:model Author
-
-# Create controllers
-php artisan make:controller AuthorController
-php artisan make:controller BookController
-php artisan make:controller PublisherController
-
-# Create API resources
-php artisan make:resource AuthorResource
-php artisan make:resource PublisherResource
-php artisan make:resource BookResource
-
-# Create API resource collections
-php artisan make:resource AuthorCollection
-php artisan make:resource PublisherCollection
-php artisan make:resource BookCollection
 ```
 
-## How to show migration sql?
+Rename file `Example.js` to `Candidate.js`.
 
-```
-php artisan migrate --pretend
-```
+Create file `index.blade.php` and `single.blade.php`.
 
-## How to remigrate?
+To test the webpage, goto 
 
-```
-mysql -uroot -p
-drop database laravel_project;
-create database laravel_project;
-php artisan migrate
-```
+- http://localhost:8000/candidates/
 
-## How to try the API?
-
-Use HTTPie (download from Internet).
-
-```sh
-# For authors
-http GET    http://localhost:8000/api/authors
-http GET    http://localhost:8000/api/authors/1
-echo '{"name": "Lee"}' | http POST   http://localhost:8000/api/authors
-echo '{"name": "newLee"}' | http PUT    http://localhost:8000/api/authors/1
-http DELETE http://localhost:8000/api/authors/1 
-
-# For publishers
-http GET    http://localhost:8000/api/publishers
-http GET    http://localhost:8000/api/publishers/1
-echo '{"name": "Leepublisher"}' | http POST   http://localhost:8000/api/publishers
-echo '{"name": "new publisher"}' | http PUT    http://localhost:8000/api/publishers/1
-http DELETE http://localhost:8000/api/publishers/1 
-
-# For books
-http GET    http://localhost:8000/api/books
-http GET    http://localhost:8000/api/books/1
+- http://localhost:8000/candidates/2
 
 
-echo '{"isbn": "0889", "title": "abook", "year": 1998, "publisher_id": 1, "authors": [1]}' | http POST   http://localhost:8000/api/books 
-
-echo '{"isbn": "0889", "title": "abook", "year": 1998, "publisher_id": 2, "authors": [1,2]}' | http PUT    http://localhost:8000/api/books/2 
-
-http DELETE http://localhost:8000/api/books/2
-```
-```
-http://localhost:8000/api/authors
-```
 
