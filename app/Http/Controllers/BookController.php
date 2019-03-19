@@ -56,9 +56,9 @@ class BookController extends Controller
         $book = Book::find($id);
         if(!$book) {
             return response()->json([
-                'error'   => 404,
-                'message' => 'Not found'
-            ], 404);
+                'error' => 404,
+                'message' => 'not found'
+            ]);
         } else {
             $book->update($request->except(['isbn']));
             $book->authors()->sync($request->authors);
