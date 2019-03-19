@@ -3,6 +3,7 @@
 ## Q1(b)
 ```sh
 php artisan preset react
+npm install
 ```
 
 
@@ -47,7 +48,6 @@ php artisan make:resource CandidateCollection
 
 ## Q2(c)
 ```
-php artisan make:controller PartyController
 php artisan make:controller CandidateController
 ```
 Testing Q2(c) with HTTPie
@@ -75,6 +75,11 @@ php artisan make:controller WebController
 Rename file `Example.js` to `Candidate.js`.
 
 Create file `index.blade.php` and `single.blade.php`.
+
+Then, compile the React file,
+```
+npm run dev
+```
 
 To test the webpage, goto 
 
